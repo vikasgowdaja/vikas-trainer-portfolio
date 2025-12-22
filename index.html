@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikas Gowda J A - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f5f5f5;
+            padding: 10px;
+            font-size: 10pt;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #a8d0ff;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+            font-size: 0.85em;
+        }
+        
+        .content {
+            padding: 20px 30px;
+        }
+        
+        .section {
+            margin-bottom: 18px;
+        }
+        
+        .section-title {
+            color: #1e3c72;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #2a5298;
+            font-weight: bold;
+        }
+        
+        .summary {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 3px solid #2a5298;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        
+        .skill-item {
+            font-size: 0.9em;
+            padding: 6px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .skill-item strong {
+            color: #1e3c72;
+            display: block;
+            margin-bottom: 3px;
+            font-size: 0.95em;
+        }
+        
+        .experience-item {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #2a5298;
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 6px;
+        }
+        
+        .exp-title {
+            color: #1e3c72;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        
+        .exp-company {
+            color: #2a5298;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-top: 2px;
+        }
+        
+        .exp-date {
+            color: #666;
+            font-weight: 600;
+            background: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+        
+        .experience-item ul {
+            margin-left: 18px;
+            margin-top: 5px;
+        }
+        
+        .experience-item li {
+            margin-bottom: 4px;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .highlight-box {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #2196f3;
+            margin-top: 8px;
+            font-size: 0.9em;
+        }
+        
+        .highlight-box h3 {
+            color: #1565c0;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+        
+        .inst-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+        
+        .inst-list div {
+            padding: 3px;
+        }
+        
+        .current-collab {
+            background: #fff3e0;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #ff9800;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        
+        .current-collab h4 {
+            color: #e65100;
+            margin-bottom: 4px;
+            font-size: 0.95em;
+        }
+        
+        .project-item {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #607d8b;
+            font-size: 0.9em;
+        }
+        
+        .project-item h3 {
+            color: #37474f;
+            margin-bottom: 4px;
+            font-size: 0.95em;
+        }
+        
+        .education-item {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #2a5298;
+            font-size: 0.9em;
+        }
+        
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .education-item h3 {
+            color: #1e3c72;
+            margin-bottom: 3px;
+            font-size: 0.95em;
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .cert-item {
+            background: #e3f2fd;
+            padding: 8px;
+            border-radius: 4px;
+            border-left: 3px solid #2196f3;
+            font-size: 0.85em;
+        }
+        
+        .cert-item strong {
+            color: #1565c0;
+            display: block;
+            margin-bottom: 3px;
+        }
+        
+        ul {
+            padding-left: 18px;
+        }
+        
+        li {
+            margin-bottom: 3px;
+        }
+        
+        strong {
+            color: #1e3c72;
+        }
+        
+        a {
+            color: #2a5298;
+            text-decoration: none;
+        }
+        
+        .page-break {
+            page-break-after: always;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                font-size: 9pt;
+            }
+            
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .header {
+                padding: 15px 25px;
+            }
+            
+            .content {
+                padding: 15px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>VIKAS GOWDA J A</h1>
+            <div class="subtitle">Senior Technical Trainer & Full Stack Developer</div>
+            <div class="contact-info">
+                <div>📱 +91 9008433284</div>
+                <div>✉️ vikasgowdaja@gmail.com</div>
+                <div>🔗 <a href="https://www.linkedin.com/in/vikasgowdaja/" style="color: white;">LinkedIn</a></div>
+                <div>📍 Bengaluru, Karnataka</div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Professional Summary -->
+            <div class="section">
+                <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+                <div class="summary">
+                    Senior Technical Trainer with <strong>5+ years training delivery experience</strong> across 20+ institutions and corporate clients. Specialized in Java Full Stack, MERN, Angular, DevOps, Cloud (AWS/Azure), and AI tools. Trained <strong>3000+ students/professionals</strong> with <strong>180+ hour programs</strong>. Currently pursuing IIT Guwahati's Micro-Credit Program (CGPA: 8.0). Complemented by 4+ years full-stack development at Ancile Digital, ByteXL, and LTIMindtree.
+                </div>
+            </div>
+            
+            <!-- Training Expertise -->
+            <div class="section">
+                <h2 class="section-title">TRAINING EXPERTISE & DELIVERY</h2>
+                <div class="two-col">
+                    <div class="skill-item">
+                        <strong>Backend:</strong> Java, Spring Boot, JPA/Hibernate, REST APIs, Microservices, Node.js, Express.js
+                    </div>
+                    <div class="skill-item">
+                        <strong>Frontend:</strong> Angular, React.js, Next.js, TypeScript, Tailwind CSS, Material-UI
+                    </div>
+                    <div class="skill-item">
+                        <strong>DevOps:</strong> Jenkins, Azure DevOps, CI/CD, GitLab, GitHub Actions, Maven
+                    </div>
+                    <div class="skill-item">
+                        <strong>Cloud:</strong> AWS (EC2, S3, Lambda, RDS, Amplify), Azure, Architectural Principles
+                    </div>
+                    <div class="skill-item">
+                        <strong>Containers:</strong> Docker, Kubernetes, Container Orchestration
+                    </div>
+                    <div class="skill-item">
+                        <strong>Databases:</strong> Oracle, PostgreSQL, MySQL, MongoDB
+                    </div>
+                    <div class="skill-item">
+                        <strong>Messaging:</strong> Kafka, RabbitMQ, Message Queue Systems
+                    </div>
+                    <div class="skill-item">
+                        <strong>SRE:</strong> Logging, Monitoring, Site Reliability Practices
+                    </div>
+                    <div class="skill-item">
+                        <strong>AI Tools:</strong> GitHub Copilot, IntelliJ AI, AI Ops, Postman AI
+                    </div>
+                    <div class="skill-item">
+                        <strong>Data Eng:</strong> ETL, Data Pipelines, Warehousing, Analytics, Big Data
+                    </div>
+                </div>
+                <div style="margin-top: 8px; font-size: 0.9em; line-height: 1.4;">
+                    <strong>Delivery:</strong> 180+ hour programs • Multiple parallel batches • 4-hour sessions • 45+ half-days • VILT (Zoom, Teams, WebEx) • Hands-on projects • Live coding • Corporate training • Placement prep
+                </div>
+            </div>
+            
+            <!-- Professional Experience -->
+            <div class="section">
+                <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+                
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Senior Technical Trainer & Web Developer</div>
+                            <div class="exp-company">ByteXL (www.bytexl.com) - Gujarat</div>
+                        </div>
+                        <div class="exp-date">09/2023 - 04/2025</div>
+                    </div>
+                    <ul>
+                        <li>Trained <strong>800+ students/professionals</strong> in MERN, Java Full Stack, DevOps, AWS</li>
+                        <li>Designed training materials achieving <strong>95%+ engagement</strong></li>
+                        <li>Delivered React, Angular, Spring Boot, Docker, Kubernetes programs</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Freelance Technical Trainer</div>
+                            <div class="exp-company">ICT Academy | MTD | Connect2Future | Genesis</div>
+                        </div>
+                        <div class="exp-date">12/2020 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Active with <strong>MTD</strong> (ATME College - Data Eng/Analytics) & <strong>Connect2Future</strong> (GMIT College)</li>
+                        <li>Collaborated with ICT Academy, Bizotic, JV Global, Atom, SeventhSense, Dlithe</li>
+                        <li>Delivered <strong>180+ hour intensive programs</strong> in Java, Spring Boot, Python, Angular, React</li>
+                        <li>Trained AWS, Docker, CI/CD, Kafka across Karnataka and Gujarat</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Freelancer & Technical Trainer</div>
+                            <div class="exp-company">Skill Bout | Bizotic | Seventh Sense</div>
+                        </div>
+                        <div class="exp-date">09/2020 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Training for <strong>20+ colleges</strong> and corporate clients in Bengaluru</li>
+                        <li>Specialized in Java Full Stack, MERN, Angular, DevOps, placement preparation</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Technical Expert & Trainer</div>
+                            <div class="exp-company">Tripillar Solutions - Bengaluru</div>
+                        </div>
+                        <div class="exp-date">06/2024 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Training on MERN stack, Java Full Stack, DevOps with hands-on modules</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item" style="border-left-color: #607d8b;">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Senior Software Engineer</div>
+                            <div class="exp-company" style="color: #607d8b;">Ancile Digital (Version 1 - ISP Client)</div>
+                        </div>
+                        <div class="exp-date">04/2025 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Developing MERN applications with AWS Amplify, SQS, Athena, OpenAI</li>
+                        <li>Integrating ClassLink for enhanced security and authentication</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item" style="border-left-color: #607d8b;">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Software Engineer</div>
+                            <div class="exp-company" style="color: #607d8b;">LTIMindtree - Bengaluru</div>
+                        </div>
+                        <div class="exp-date">05/2022 - 06/2023</div>
+                    </div>
+                    <ul>
+                        <li>Developed Harvard Medical School website and HRMS ERP (Spring Boot, MERN)</li>
+                        <li>Utilized AWS (EC2, S3, RDS, Lambda), reduced infrastructure costs by 20%</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="page-break"></div>
+            
+            <!-- Training Engagements -->
+            <div class="section">
+                <h2 class="section-title">CORPORATE & INSTITUTIONAL ENGAGEMENTS</h2>
+                
+                <div class="highlight-box">
+                    <h3>Capgemini Women Transformation Program</h3>
+                    <p><strong>180+ hours</strong> Java Fullstack & DevOps training • Spring Boot, Angular, CI/CD, Docker, Kubernetes • <strong>92% placement rate</strong></p>
+                </div>
+                
+                <div class="current-collab">
+                    <h4>MTD (www.mtdn.co.in) - ATME College, Mysuru</h4>
+                    <p>Data Engineering & Analytics • Weekend intensive (Fri/Sat, 4hrs/day) • 15-day program • Pipeline design, analytics tools</p>
+                </div>
+                
+                <div class="current-collab">
+                    <h4>Connect2Future (www.connect2future.in) - GMIT College</h4>
+                    <p>Full-stack development & emerging tech training • Placement preparation programs</p>
+                </div>
+                
+                <div style="margin-top: 10px;">
+                    <strong style="font-size: 0.95em;">20+ Premier Institutions:</strong>
+                    <div class="inst-list">
+                        <div>• BNM IT</div>
+                        <div>• Kalpataru IT</div>
+                        <div>• GEC Hassan</div>
+                        <div>• RNSIT</div>
+                        <div>• Christ Univ</div>
+                        <div>• Presidency</div>
+                        <div>• Jain Univ</div>
+                        <div>• Bapuji</div>
+                        <div>• BIT</div>
+                        <div>• AJIT</div>
+                        <div>• BMSIT</div>
+                        <div>• SMVITM</div>
+                        <div>• NIE</div>
+                        <div>• JIT</div>
+                        <div>• SJCE</div>
+                        <div>• KLE</div>
+                        <div>• Don Bosco</div>
+                        <div>• Nagarjuna</div>
+                        <div>• ATME (MTD)</div>
+                        <div>• GMIT (C2F)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Projects -->
+            <div class="section">
+                <h2 class="section-title">KEY PROJECTS (Training Case Studies)</h2>
+                
+                <div class="project-item">
+                    <h3>Harvard Medical School - Educational Offerings Website</h3>
+                    <p>MERN stack • Enterprise-grade development • REST API design • Cloud deployment</p>
+                </div>
+                
+                <div class="project-item">
+                    <h3>HRMS ERP Application</h3>
+                    <p>Java 8, Spring Boot, JPA, Hibernate, PostgreSQL • AWS (EC2, S3, RDS) integration</p>
+                </div>
+                
+                <div class="project-item">
+                    <h3>ProductSphere - E-Commerce Dashboard</h3>
+                    <p>React, TypeScript, Vite, Tailwind CSS • Modern patterns • Interactive filtering</p>
+                </div>
+                
+                <div class="project-item">
+                    <h3>Analytics Portal (MTD)</h3>
+                    <p>Flask + Python • Vite + TypeScript • Supabase • PDF parsing • Pandas/NumPy</p>
+                </div>
+            </div>
+            
+            <!-- Technical Skills -->
+            <div class="section">
+                <h2 class="section-title">COMPREHENSIVE TECHNICAL SKILLS</h2>
+                <div class="three-col">
+                    <div style="font-size: 0.9em;">
+                        <strong>Languages:</strong><br>
+                        Java, JavaScript, TypeScript, Python, C, C++
+                    </div>
+                    <div style="font-size: 0.9em;">
+                        <strong>Backend:</strong><br>
+                        Spring Boot, Hibernate, JPA, Node.js, Express.js, Microservices
+                    </div>
+                    <div style="font-size: 0.9em;">
+                        <strong>Frontend:</strong><br>
+                        Angular, React, Next.js, Tailwind, Material-UI
+                    </div>
+                    <div style="font-size: 0.9em;">
+                        <strong>DevOps:</strong><br>
+                        Jenkins, Azure DevOps, GitLab, GitHub Actions
+                    </div>
+                    <div style="font-size: 0.9em;">
+                        <strong>Cloud:</strong><br>
+                        AWS, Azure, Docker, Kubernetes
+                    </div>
+                    <div style="font-size: 0.9em;">
+                        <strong>Databases:</strong><br>
+                        Oracle, PostgreSQL, MySQL, MongoDB
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Education -->
+            <div class="section">
+                <h2 class="section-title">EDUCATION</h2>
+                <div class="education-item">
+                    <div class="edu-header">
+                        <div>
+                            <h3>Micro-Credit Program in Computer Science</h3>
+                            <p>IIT Guwahati (IITGCS 24091634) • CGPA: 8.0/10.0</p>
+                        </div>
+                        <div class="exp-date">2024 - 2025</div>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="edu-header">
+                        <div>
+                            <h3>B.E. in Mechanical Engineering</h3>
+                            <p>Government Engineering College, Hassan • CGPA: 7.1/10.0</p>
+                        </div>
+                        <div class="exp-date">2016 - 2020</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div class="section">
+                <h2 class="section-title">CERTIFICATIONS</h2>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <strong>Frontend Developer (React)</strong>
+                        <span>HackerRank • ID: 7170828e3e0</span>
+                    </div>
+                    <div class="cert-item">
+                        <strong>Node.js (Intermediate)</strong>
+                        <span>HackerRank • ID: 7b823c566aec</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
