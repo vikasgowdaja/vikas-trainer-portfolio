@@ -3,600 +3,1053 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Vikas Gowda J A | Senior Technical Trainer & Full Stack Developer</title>
+    <title>Vikas Gowda J A | Senior Full Stack Developer & Technical Trainer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --ink: #0f172a;
+            --deep: #1e293b;
+            --mid: #334155;
+            --muted: #64748b;
+            --pale: #94a3b8;
+            --rule: #e2e8f0;
+            --surface: #f8fafc;
+            --gold: #c9973a;
+            --gold-light: #f5dfa0;
+            --gold-dim: rgba(201,151,58,0.12);
+            --blue: #1d4ed8;
+            --blue-dim: rgba(29,78,216,0.08);
+            --teal: #0d9488;
+            --teal-dim: rgba(13,148,136,0.10);
+            --accent-bar: 3px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.4;
-            color: #333;
-            background: #f5f5f5;
-            padding: 10px;
-            font-size: 10pt;
+            font-family: 'DM Sans', sans-serif;
+            background: #dde3ed;
+            color: var(--ink);
+            padding: 28px 16px;
+            font-size: 9.5pt;
+            line-height: 1.5;
+            min-height: 100vh;
         }
-        
-        .container {
-            max-width: 850px;
+
+        .page {
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background: #fff;
+            box-shadow: 0 20px 60px rgba(15,23,42,0.18), 0 4px 16px rgba(15,23,42,0.10);
         }
-        
+
+        /* ───── HEADER ───── */
         .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 20px 30px;
-            text-align: center;
+            background: var(--ink);
+            color: #fff;
+            padding: 36px 40px 28px;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 5px;
+
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 90% 50%, rgba(201,151,58,0.14) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(29,78,216,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name-block {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 4px;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            color: #fff;
+        }
+
+        .name-accent {
+            color: var(--gold);
+        }
+
+        .title-line {
+            font-size: 0.88em;
+            font-weight: 500;
+            color: #94a3b8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .header-grid {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            gap: 6px 24px;
+            align-items: center;
+        }
+
+        .contact-chip {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.82em;
+            color: #cbd5e1;
+        }
+
+        .contact-chip svg {
+            flex-shrink: 0;
+            opacity: 0.65;
+        }
+
+        .contact-chip a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-chip a:hover {
+            color: var(--gold);
+        }
+
+        .header-divider {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin: 18px 0 0;
+            border-radius: 2px;
+        }
+
+        /* ───── LAYOUT ───── */
+        .body {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            min-height: 1000px;
+        }
+
+        /* ───── SIDEBAR ───── */
+        .sidebar {
+            background: var(--surface);
+            border-right: 1px solid var(--rule);
+            padding: 28px 20px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+
+        .sidebar-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68em;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .skill-tag {
+            font-size: 0.8em;
+            padding: 4px 9px;
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            color: var(--deep);
+            margin: 3px 3px 3px 0;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .skill-group {
+            margin-bottom: 12px;
+        }
+
+        .skill-group-label {
+            font-size: 0.73em;
+            font-weight: 600;
+            color: var(--muted);
+            margin-bottom: 4px;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
-        .header .subtitle {
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            color: #a8d0ff;
-        }
-        
-        .contact-info {
+
+        .bar-wrap {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-            font-size: 0.85em;
+            flex-direction: column;
+            gap: 7px;
         }
-        
-        .content {
-            padding: 20px 30px;
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
         }
-        
-        .section {
-            margin-bottom: 18px;
-        }
-        
-        .section-title {
-            color: #1e3c72;
-            font-size: 1.3em;
-            margin-bottom: 8px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #2a5298;
-            font-weight: bold;
-        }
-        
-        .summary {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 5px;
-            border-left: 3px solid #2a5298;
-            font-size: 0.95em;
-            line-height: 1.5;
-        }
-        
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 8px;
-        }
-        
-        .three-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin-top: 8px;
-        }
-        
-        .skill-item {
-            font-size: 0.9em;
-            padding: 6px;
-            background: #f8f9fa;
-            border-radius: 4px;
-        }
-        
-        .skill-item strong {
-            color: #1e3c72;
-            display: block;
-            margin-bottom: 3px;
-            font-size: 0.95em;
-        }
-        
-        .experience-item {
-            margin-bottom: 12px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 5px;
-            border-left: 3px solid #2a5298;
-        }
-        
-        .exp-header {
+
+        .bar-label {
+            font-size: 0.8em;
+            font-weight: 500;
+            color: var(--deep);
             display: flex;
             justify-content: space-between;
-            align-items: start;
+        }
+
+        .bar-label span {
+            color: var(--pale);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        .bar-track {
+            height: 3px;
+            background: var(--rule);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--gold), #e8a83c);
+        }
+
+        .cert-card {
+            background: var(--gold-dim);
+            border: 1px solid rgba(201,151,58,0.25);
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-bottom: 7px;
+            font-size: 0.78em;
+        }
+
+        .cert-card strong {
+            display: block;
+            color: var(--deep);
+            font-weight: 600;
+            margin-bottom: 2px;
+            font-size: 1em;
+        }
+
+        .cert-card span {
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.88em;
+        }
+
+        /* Clickable cert cards */
+        a.cert-card {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        a.cert-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(201,151,58,0.22);
+            border-color: rgba(201,151,58,0.55);
+        }
+
+        a.cert-card.cert-aws {
+            background: linear-gradient(135deg, rgba(255,153,0,0.10) 0%, rgba(201,151,58,0.08) 100%);
+            border-color: rgba(255,153,0,0.28);
+        }
+
+        a.cert-card.cert-aws:hover {
+            box-shadow: 0 4px 14px rgba(255,153,0,0.22);
+            border-color: rgba(255,153,0,0.55);
+        }
+
+        .cert-link-label {
+            font-size: 0.76em;
+            color: var(--gold);
+            font-family: 'DM Mono', monospace;
+            margin-top: 5px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
+
+        a.cert-card.cert-aws .cert-link-label {
+            color: #c97a00;
+        }
+
+        a.cert-card:hover .cert-link-label {
+            opacity: 1;
+        }
+
+        .edu-card {
+            background: var(--blue-dim);
+            border: 1px solid rgba(29,78,216,0.15);
+            border-radius: 6px;
+            padding: 9px 10px;
+            margin-bottom: 7px;
+        }
+
+        .edu-card .deg {
+            font-size: 0.82em;
+            font-weight: 600;
+            color: var(--deep);
+            line-height: 1.3;
+            margin-bottom: 3px;
+        }
+
+        .edu-card .inst {
+            font-size: 0.76em;
+            color: var(--muted);
+            margin-bottom: 3px;
+            line-height: 1.3;
+        }
+
+        .edu-card .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.73em;
+            color: var(--pale);
+            font-family: 'DM Mono', monospace;
+        }
+
+        .edu-card .cgpa {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .stat-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--ink) 0%, var(--deep) 100%);
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+
+        .stat-box .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: 800;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-box .desc {
+            font-size: 0.73em;
+            color: #94a3b8;
+            margin-top: 3px;
+        }
+
+        /* ───── MAIN ───── */
+        .main {
+            padding: 28px 30px;
+        }
+
+        /* Section headings */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.08em;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: 0.3px;
+        }
+
+        .section-head::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--rule) 0%, transparent 100%);
+        }
+
+        .section-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75em;
+            flex-shrink: 0;
+        }
+
+        .icon-gold { background: var(--gold-dim); }
+        .icon-blue { background: var(--blue-dim); }
+        .icon-teal { background: var(--teal-dim); }
+
+        /* Summary */
+        .summary-text {
+            font-size: 0.88em;
+            color: var(--mid);
+            line-height: 1.65;
+            padding: 12px 16px;
+            background: var(--surface);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .summary-text strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* Experience */
+        .exp-item {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 3px;
+            height: calc(100% - 4px);
+            border-radius: 2px;
+            background: var(--gold);
+        }
+
+        .exp-item.dev::before {
+            background: var(--teal);
+        }
+
+        .exp-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 2px;
+        }
+
+        .exp-title {
+            font-size: 0.92em;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .exp-date-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.73em;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            padding: 2px 8px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .exp-company {
+            font-size: 0.8em;
+            color: var(--muted);
+            font-weight: 500;
             margin-bottom: 6px;
         }
-        
-        .exp-title {
-            color: #1e3c72;
-            font-size: 1em;
-            font-weight: bold;
-        }
-        
-        .exp-company {
-            color: #2a5298;
+
+        .exp-company strong {
+            color: var(--blue);
             font-weight: 600;
-            font-size: 0.9em;
-            margin-top: 2px;
         }
-        
-        .exp-date {
-            color: #666;
-            font-weight: 600;
-            background: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            white-space: nowrap;
+
+        .exp-list {
+            list-style: none;
+            padding: 0;
         }
-        
-        .experience-item ul {
-            margin-left: 18px;
-            margin-top: 5px;
-        }
-        
-        .experience-item li {
-            margin-bottom: 4px;
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-        
-        .highlight-box {
-            background: #e3f2fd;
-            padding: 10px;
-            border-radius: 5px;
-            border-left: 3px solid #2196f3;
-            margin-top: 8px;
-            font-size: 0.9em;
-        }
-        
-        .highlight-box h3 {
-            color: #1565c0;
-            margin-bottom: 5px;
-            font-size: 1em;
-        }
-        
-        .inst-list {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            font-size: 0.85em;
-            margin-top: 5px;
-        }
-        
-        .inst-list div {
-            padding: 3px;
-        }
-        
-        .current-collab {
-            background: #fff3e0;
-            padding: 10px;
-            border-radius: 5px;
-            border-left: 3px solid #ff9800;
-            margin-bottom: 8px;
-            font-size: 0.9em;
-        }
-        
-        .current-collab h4 {
-            color: #e65100;
-            margin-bottom: 4px;
-            font-size: 0.95em;
-        }
-        
-        .project-item {
-            margin-bottom: 8px;
-            padding: 8px;
-            background: #f8f9fa;
-            border-radius: 4px;
-            border-left: 3px solid #607d8b;
-            font-size: 0.9em;
-        }
-        
-        .project-item h3 {
-            color: #37474f;
-            margin-bottom: 4px;
-            font-size: 0.95em;
-        }
-        
-        .education-item {
-            margin-bottom: 8px;
-            padding: 8px;
-            background: #f8f9fa;
-            border-radius: 4px;
-            border-left: 3px solid #2a5298;
-            font-size: 0.9em;
-        }
-        
-        .edu-header {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .education-item h3 {
-            color: #1e3c72;
+
+        .exp-list li {
+            font-size: 0.82em;
+            color: var(--mid);
+            padding-left: 12px;
+            position: relative;
             margin-bottom: 3px;
-            font-size: 0.95em;
+            line-height: 1.5;
         }
-        
-        .cert-grid {
+
+        .exp-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.1em;
+            top: -1px;
+        }
+
+        .exp-list li strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .role-type-pill {
+            display: inline-block;
+            font-size: 0.68em;
+            font-weight: 600;
+            padding: 1px 7px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .pill-train { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,151,58,0.3); }
+        .pill-dev { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(13,148,136,0.25); }
+        .pill-current { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+
+        /* Highlight cards */
+        .highlight-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
+            margin-top: 10px;
+        }
+
+        .h-card {
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 0.8em;
+            border: 1px solid;
+        }
+
+        .h-card.capgemini {
+            background: var(--gold-dim);
+            border-color: rgba(201,151,58,0.25);
+        }
+
+        .h-card.corporate {
+            background: var(--blue-dim);
+            border-color: rgba(29,78,216,0.15);
+        }
+
+        .h-card .h-title {
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 4px;
+            font-size: 1em;
+        }
+
+        .h-card .h-body {
+            color: var(--mid);
+            line-height: 1.4;
+        }
+
+        /* Training grid */
+        .inst-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
             margin-top: 8px;
         }
-        
-        .cert-item {
-            background: #e3f2fd;
-            padding: 8px;
+
+        .inst-chip {
+            background: var(--surface);
+            border: 1px solid var(--rule);
             border-radius: 4px;
-            border-left: 3px solid #2196f3;
+            padding: 4px 6px;
+            font-size: 0.75em;
+            font-weight: 500;
+            color: var(--mid);
+            text-align: center;
+        }
+
+        /* Verdict banner */
+        .verdict-section {
+            background: linear-gradient(135deg, #fef9ec 0%, #fff8e7 100%);
+            border: 1px solid rgba(201,151,58,0.3);
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 22px;
+            font-size: 0.82em;
+        }
+
+        .verdict-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 8px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .verdict-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .v-col { }
+
+        .v-col .v-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.78em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid rgba(201,151,58,0.2);
+        }
+
+        .v-good .v-label { color: #166534; }
+        .v-fix .v-label { color: #92400e; }
+        .v-add .v-label { color: var(--blue); }
+
+        .v-item {
+            padding: 2px 0 2px 8px;
+            position: relative;
+            color: var(--mid);
+            line-height: 1.4;
+        }
+
+        .v-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+        }
+
+        .v-good .v-item::before { background: #22c55e; }
+        .v-fix .v-item::before { background: #f59e0b; }
+        .v-add .v-item::before { background: var(--blue); }
+
+        /* Projects */
+        .proj-item {
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            padding: 9px 12px;
+            margin-bottom: 7px;
+            background: var(--surface);
+        }
+
+        .proj-item:last-child { margin-bottom: 0; }
+
+        .proj-head {
+            font-weight: 600;
+            color: var(--ink);
             font-size: 0.85em;
-        }
-        
-        .cert-item strong {
-            color: #1565c0;
-            display: block;
             margin-bottom: 3px;
         }
-        
-        ul {
-            padding-left: 18px;
+
+        .proj-stack {
+            font-size: 0.76em;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 4px;
         }
-        
-        li {
-            margin-bottom: 3px;
+
+        .stack-pill {
+            background: var(--ink);
+            color: #e2e8f0;
+            padding: 1px 7px;
+            border-radius: 3px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9em;
         }
-        
-        strong {
-            color: #1e3c72;
+
+        /* Footer rule */
+        .page-footer {
+            border-top: 1px solid var(--rule);
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.72em;
+            color: var(--pale);
+            font-family: 'DM Mono', monospace;
+            background: var(--surface);
         }
-        
-        a {
-            color: #2a5298;
-            text-decoration: none;
-        }
-        
-        .page-break {
-            page-break-after: always;
-        }
-        
+
         @media print {
-            body {
-                background: white;
-                padding: 0;
-                font-size: 9pt;
-            }
-            
-            .container {
-                box-shadow: none;
-                max-width: 100%;
-            }
-            
-            .section {
-                page-break-inside: avoid;
-            }
-            
-            .header {
-                padding: 15px 25px;
-            }
-            
-            .content {
-                padding: 15px 25px;
-            }
+            body { background: white; padding: 0; font-size: 8.5pt; }
+            .page { box-shadow: none; max-width: 100%; }
+            .verdict-section { display: none; }
+            .body { min-height: auto; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>VIKAS GOWDA J A</h1>
-            <div class="subtitle">Senior Technical Trainer & Full Stack Developer</div>
-            <div class="contact-info">
-                <div>📱 +91 9008433284</div>
-                <div>✉️ vikasgowdaja@gmail.com</div>
-                <div>🔗 <a href="https://www.linkedin.com/in/vikasgowdaja/" style="color: white;">LinkedIn</a></div>
-                <div>📍 Bengaluru, Karnataka</div>
+<div class="page">
+
+    <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+    <div class="header">
+        <div class="header-inner">
+            <div class="name-block">
+                <div class="name">VIKAS GOWDA <span class="name-accent">J A</span></div>
             </div>
-        </div>
-        
-        <!-- Content -->
-        <div class="content">
-            <!-- Professional Summary -->
-            <div class="section">
-                <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
-                <div class="summary">
-                    Senior Technical Trainer with <strong>6+ years training delivery experience</strong> across 20+ institutions and corporate clients. Specialized in Java Full Stack, MERN, Angular, DevOps, Cloud (AWS/Azure), and AI tools. Trained <strong>3000+ students/professionals</strong> with <strong>180+ hour programs</strong>. Currently pursuing IIT Guwahati's Micro-Credit Program (CGPA: 8.0). Complemented by 4+ years full-stack development at Ancile Digital, ByteXL, and LTIMindtree.
+            <div class="title-line">Senior Full Stack Developer &nbsp;·&nbsp; Technical Trainer</div>
+            <div class="header-grid">
+                <div class="contact-chip">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14 19.79 19.79 0 0 1 1.61 5.43a2 2 0 0 1 1.84-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 18z"/></svg>
+                    <a href="tel:+919008433284">+91 9008433284</a>
                 </div>
-            </div>
-            
-            <!-- Training Expertise -->
-            <div class="section">
-                <h2 class="section-title">TRAINING EXPERTISE & DELIVERY</h2>
-                <div class="two-col">
-                    <div class="skill-item">
-                        <strong>Backend:</strong> Java, Spring Boot, JPA/Hibernate, REST APIs, Microservices, Node.js, Express.js
-                    </div>
-                    <div class="skill-item">
-                        <strong>Frontend:</strong> Angular, React.js, Next.js, TypeScript, Tailwind CSS, Material-UI
-                    </div>
-                    <div class="skill-item">
-                        <strong>DevOps:</strong> Jenkins, Azure DevOps, CI/CD, GitLab, GitHub Actions, Maven
-                    </div>
-                    <div class="skill-item">
-                        <strong>Cloud:</strong> AWS (EC2, S3, Lambda, RDS, Amplify), Azure, Architectural Principles
-                    </div>
-                    <div class="skill-item">
-                        <strong>Containers:</strong> Docker, Kubernetes, Container Orchestration
-                    </div>
-                    <div class="skill-item">
-                        <strong>Databases:</strong> Oracle, PostgreSQL, MySQL, MongoDB
-                    </div>
-                    <div class="skill-item">
-                        <strong>Messaging:</strong> Kafka, RabbitMQ, Message Queue Systems
-                    </div>
-                    <div class="skill-item">
-                        <strong>SRE:</strong> Logging, Monitoring, Site Reliability Practices
-                    </div>
-                    <div class="skill-item">
-                        <strong>AI Tools:</strong> GitHub Copilot, IntelliJ AI, AI Ops, Postman AI
-                    </div>
+                <div class="contact-chip">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0d7b64666c7e6a627a696c676c4d6a606c6461236e6260">vikasgowdaja@gmail.com</a>
                 </div>
-                <div style="margin-top: 8px; font-size: 0.9em; line-height: 1.4;">
-                    <strong>Delivery:</strong> 180+ hour programs • Multiple parallel batches • 4-hour sessions • 45+ half-days • VILT (Zoom, Teams, WebEx) • Hands-on projects • Live coding • Corporate training • Placement prep
+                <div class="contact-chip">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    <a href="https://www.linkedin.com/in/vikasgowdaja/">LinkedIn</a>
+                </div>
+                <div class="contact-chip">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    <a href="https://github.com/vikasgowdaja">GitHub</a>
+                </div>
+                <div class="contact-chip">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Bengaluru, Karnataka
                 </div>
             </div>
-            
-            <!-- Professional Experience -->
-            <div class="section">
-                <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
-                
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Senior Technical Trainer & Web Developer</div>
-                            <div class="exp-company">ByteXL (www.bytexl.com) - Gujarat</div>
-                        </div>
-                        <div class="exp-date">09/2023 - 04/2025</div>
-                    </div>
-                    <ul>
-                        <li>Trained <strong>800+ students/professionals</strong> in MERN, Java Full Stack, DevOps, AWS</li>
-                        <li>Designed training materials achieving <strong>95%+ engagement</strong></li>
-                        <li>Delivered React, Angular, Spring Boot, Docker, Kubernetes programs</li>
-                    </ul>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Freelance Technical Trainer</div>
-                            <div class="exp-company">ICT Academy | MTD | Connect2Future | Genesis</div>
-                        </div>
-                        <div class="exp-date">12/2020 - Present</div>
-                    </div>
-                    <ul>
-                        <li>Active with <strong>MTD</strong> (ATME College - Data Eng/Analytics) & <strong>Connect2Future</strong> (GMIT College)</li>
-                        <li>Collaborated with ICT Academy, Bizotic, JV Global, Atom, SeventhSense, Dlithe</li>
-                        <li>Delivered <strong>180+ hour intensive programs</strong> in Java, Spring Boot, Python, Angular, React</li>
-                        <li>Trained AWS, Docker, CI/CD, Kafka across Karnataka and Gujarat</li>
-                    </ul>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Freelancer & Technical Trainer</div>
-                            <div class="exp-company">Skill Bout | Bizotic | Seventh Sense</div>
-                        </div>
-                        <div class="exp-date">09/2020 - Present</div>
-                    </div>
-                    <ul>
-                        <li>Training for <strong>20+ colleges</strong> and corporate clients in Bengaluru</li>
-                        <li>Specialized in Java Full Stack, MERN, Angular, DevOps, placement preparation</li>
-                    </ul>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Technical Expert & Trainer</div>
-                            <div class="exp-company">Tripillar Solutions - Bengaluru</div>
-                        </div>
-                        <div class="exp-date">06/2024 - Present</div>
-                    </div>
-                    <ul>
-                        <li>Training on MERN stack, Java Full Stack, DevOps with hands-on modules</li>
-                    </ul>
-                </div>
-                
-                <div class="experience-item" style="border-left-color: #607d8b;">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Senior Software Engineer</div>
-                            <div class="exp-company" style="color: #607d8b;">Ancile Digital (Version 1 - ISP Client)</div>
-                        </div>
-                        <div class="exp-date">04/2025 - Present</div>
-                    </div>
-                    <ul>
-                        <li>Developing MERN applications with AWS Amplify, SQS, Athena, OpenAI</li>
-                        <li>Integrating ClassLink for enhanced security and authentication</li>
-                    </ul>
-                </div>
-                
-                <div class="experience-item" style="border-left-color: #607d8b;">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-title">Software Engineer</div>
-                            <div class="exp-company" style="color: #607d8b;">LTIMindtree - Bengaluru</div>
-                        </div>
-                        <div class="exp-date">05/2022 - 06/2023</div>
-                    </div>
-                    <ul>
-                        <li>Developed Harvard Medical School website and HRMS ERP (Spring Boot, MERN)</li>
-                        <li>Utilized AWS (EC2, S3, RDS, Lambda), reduced infrastructure costs by 20%</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="page-break"></div>
-            
-            <!-- Training Engagements -->
-            <div class="section">
-                <h2 class="section-title">CORPORATE & INSTITUTIONAL ENGAGEMENTS</h2>
-                
-                <div class="highlight-box">
-                    <h3>Capgemini Women Transformation Program</h3>
-                    <p><strong>180+ hours</strong> Java Fullstack & DevOps training • Spring Boot, Angular, CI/CD, Docker, Kubernetes • <strong>92% placement rate</strong></p>
-                </div>
-                
-                <div class="current-collab">
-                    <h4>MTD (www.mtdn.co.in) - ATME College, Mysuru</h4>
-                    <p>Data Engineering & Analytics • Weekend intensive (Fri/Sat, 4hrs/day) • 15-day program • Pipeline design, analytics tools</p>
-                </div>
-                
-                <div class="current-collab">
-                    <h4>Connect2Future (www.connect2future.in) - GMIT College</h4>
-                    <p>Full-stack development & emerging tech training • Placement preparation programs</p>
-                </div>
-                
-                <div style="margin-top: 10px;">
-                    <strong style="font-size: 0.95em;">20+ Premier Institutions:</strong>
-                    <div class="inst-list">
-                        <div>• BNM IT</div>
-                        <div>• Kalpataru IT</div>
-                        <div>• GEC Hassan</div>
-                        <div>• RNSIT</div>
-                        <div>• Christ Univ</div>
-                        <div>• Presidency</div>
-                        <div>• Jain Univ</div>
-                        <div>• Bapuji</div>
-                        <div>• BIT</div>
-                        <div>• AJIT</div>
-                        <div>• BMSIT</div>
-                        <div>• SMVITM</div>
-                        <div>• NIE</div>
-                        <div>• JIT</div>
-                        <div>• SJCE</div>
-                        <div>• KLE</div>
-                        <div>• Don Bosco</div>
-                        <div>• Nagarjuna</div>
-                        <div>• ATME (MTD)</div>
-                        <div>• GMIT (C2F)</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Key Projects -->
-            <div class="section">
-                <h2 class="section-title">KEY PROJECTS (Training Case Studies)</h2>
-                
-                <div class="project-item">
-                    <h3>Harvard Medical School - Educational Offerings Website</h3>
-                    <p>MERN stack • Enterprise-grade development • REST API design • Cloud deployment</p>
-                </div>
-                
-                <div class="project-item">
-                    <h3>HRMS ERP Application</h3>
-                    <p>Java 8, Spring Boot, JPA, Hibernate, PostgreSQL • AWS (EC2, S3, RDS) integration</p>
-                </div>
-                
-                <div class="project-item">
-                    <h3>ProductSphere - E-Commerce Dashboard</h3>
-                    <p>React, TypeScript, Vite, Tailwind CSS • Modern patterns • Interactive filtering</p>
-                </div>
-                
-                <div class="project-item">
-                    <h3>Analytics Portal (MTD)</h3>
-                    <p>Flask + Python • Vite + TypeScript • Supabase • PDF parsing • Pandas/NumPy</p>
-                </div>
-            </div>
-            
-            <!-- Technical Skills -->
-            <div class="section">
-                <h2 class="section-title">COMPREHENSIVE TECHNICAL SKILLS</h2>
-                <div class="three-col">
-                    <div style="font-size: 0.9em;">
-                        <strong>Languages:</strong><br>
-                        Java, JavaScript, TypeScript, Python, C, C++
-                    </div>
-                    <div style="font-size: 0.9em;">
-                        <strong>Backend:</strong><br>
-                        Spring Boot, Hibernate, JPA, Node.js, Express.js, Microservices
-                    </div>
-                    <div style="font-size: 0.9em;">
-                        <strong>Frontend:</strong><br>
-                        Angular, React, Next.js, Tailwind, Material-UI
-                    </div>
-                    <div style="font-size: 0.9em;">
-                        <strong>DevOps:</strong><br>
-                        Jenkins, Azure DevOps, GitLab, GitHub Actions
-                    </div>
-                    <div style="font-size: 0.9em;">
-                        <strong>Cloud:</strong><br>
-                        AWS, Azure, Docker, Kubernetes
-                    </div>
-                    <div style="font-size: 0.9em;">
-                        <strong>Databases:</strong><br>
-                        Oracle, PostgreSQL, MySQL, MongoDB
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Education -->
-            <div class="section">
-                <h2 class="section-title">EDUCATION</h2>
-                <div class="education-item">
-                    <div class="edu-header">
-                        <div>
-                            <h3>Micro-Credit Program in Computer Science</h3>
-                            <p>IIT Guwahati (IITGCS 24091634) • CGPA: 8.0/10.0</p>
-                        </div>
-                        <div class="exp-date">2024 - 2025</div>
-                    </div>
-                </div>
-                <div class="education-item">
-                    <div class="edu-header">
-                        <div>
-                            <h3>B.E. in Mechanical Engineering</h3>
-                            <p>Government Engineering College, Hassan • CGPA: 7.1/10.0</p>
-                        </div>
-                        <div class="exp-date">2016 - 2020</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Certifications -->
-            <div class="section">
-                <h2 class="section-title">CERTIFICATIONS</h2>
-                <div class="cert-grid">
-                    <div class="cert-item">
-                        <strong>Frontend Developer (React)</strong>
-                        <span>HackerRank • ID: 7170828e3e0</span>
-                    </div>
-                    <div class="cert-item">
-                        <strong>Node.js (Intermediate)</strong>
-                        <span>HackerRank • ID: 7b823c566aec</span>
-                    </div>
-                </div>
-            </div>
+            <div class="header-divider"></div>
         </div>
     </div>
-</body>
-</html>
+
+    <!-- ═══════════════════════════ BODY GRID ═══════════════════════════ -->
+    <div class="body">
+
+        <!-- ──────────── SIDEBAR ──────────── -->
+        <div class="sidebar">
+
+            <!-- Stats -->
+            <div class="sidebar-section">
+                <div class="sidebar-label">Impact</div>
+                <div class="stat-row">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                        <div class="stat-box">
+                            <span class="num">3000<sup style="font-size:0.5em;vertical-align:super">+</sup></span>
+                            <div class="desc">Students Trained</div>
+                        </div>
+                        <div class="stat-box">
+                            <span class="num">20<sup style="font-size:0.5em;vertical-align:super">+</sup></span>
+                            <div class="desc">Institutions</div>
+                        </div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                        <div class="stat-box">
+                            <span class="num">180<sup style="font-size:0.5em;vertical-align:super">+</sup></span>
+                            <div class="desc">Hour Programs</div>
+                        </div>
+                        <div class="stat-box">
+                            <span class="num">6<sup style="font-size:0.5em;vertical-align:super">+</sup></span>
+                            <div class="desc">Years Exp.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Skills -->
+            <div class="sidebar-section">
+                <div class="sidebar-label">Technical</div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Languages</div>
+                    <span class="skill-tag">Java</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span class="skill-tag">C / C++</span>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Backend</div>
+                    <span class="skill-tag">Spring Boot</span><span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">Microservices</span>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Frontend</div>
+                    <span class="skill-tag">React.js</span><span class="skill-tag">Angular</span><span class="skill-tag">Next.js</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Material-UI</span>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Cloud &amp; DevOps</div>
+                    <span class="skill-tag">AWS</span><span class="skill-tag">Azure</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Jenkins</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">Azure DevOps</span><span class="skill-tag">CI/CD</span>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Databases &amp; Messaging</div>
+                    <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">MySQL</span><span class="skill-tag">Oracle</span><span class="skill-tag">Kafka</span><span class="skill-tag">RabbitMQ</span>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">AI / GenAI</div>
+                    <span class="skill-tag">LLMs</span><span class="skill-tag">RAG</span><span class="skill-tag">LangChain</span><span class="skill-tag">Vector DBs</span><span class="skill-tag">Prompt Eng.</span><span class="skill-tag">GitHub Copilot</span>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-label">Systems &amp; Other</div>
+                    <span class="skill-tag">Linux</span><span class="skill-tag">Shell Scripting</span><span class="skill-tag">Postman</span><span class="skill-tag">Maven</span><span class="skill-tag">Cypress</span>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="sidebar-section">
+                <div class="sidebar-label">Education</div>
+                <div class="edu-card">
+                    <div class="deg">Micro-Credit Program in Computer Science</div>
+                    <div class="inst">IIT Guwahati &nbsp;·&nbsp; IITGCS 24091634</div>
+                    <div class="meta"><span>2024 – 2025</span><span class="cgpa">CGPA 8.0</span></div>
+                </div>
+                <div class="edu-card">
+                    <div class="deg">B.E. Mechanical Engineering</div>
+                    <div class="inst">Govt. Engineering College, Hassan</div>
+                    <div class="meta"><span>2016 – 2020</span><span class="cgpa">CGPA 7.1</span></div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="sidebar-section">
+                <div class="sidebar-label">Certifications</div>
+                <a href="https://www.hackerrank.com/certificates/71740828e3e0" target="_blank" rel="noopener" class="cert-card cert-link">
+                    <strong>Frontend Developer (React)</strong>
+                    <span>HackerRank · ID: 71740828e3e0</span>
+                    <div class="cert-link-label">↗ View Certificate</div>
+                </a>
+                <a href="https://www.hackerrank.com/certificates/7b823c566aec" target="_blank" rel="noopener" class="cert-card cert-link">
+                    <strong>Node.js Intermediate</strong>
+                    <span>HackerRank · ID: 7b823c566aec</span>
+                    <div class="cert-link-label">↗ View Certificate</div>
+                </a>
+                <a href="https://www.credly.com/badges/6f1b3ff6-7520-466a-a6ff-967a34da6fe0/public_url" target="_blank" rel="noopener" class="cert-card cert-link cert-aws">
+                    <strong>AWS re/Start Graduate</strong>
+                    <span>Credly Verified Badge</span>
+                    <div class="cert-link-label">↗ View Badge</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ──────────── MAIN CONTENT ──────────── -->
+        <div class="main">
+
+                        <!-- ▸ SUMMARY -->
+            <div class="section">
+                <div class="section-head">
+                    <div class="section-icon icon-gold">◈</div>
+                    <h2>Professional Summary</h2>
+                </div>
+                <div class="summary-text">
+                    Senior Full Stack Developer and Technical Trainer with <strong>6+ years of experience</strong> delivering enterprise applications and structured training programs. Trained <strong>3000+ students and professionals</strong> across <strong>20+ institutions</strong> and corporate clients via <strong>180+ hour intensive programs</strong>. Deep expertise across Java Full Stack, MERN, Angular, DevOps, Cloud (AWS &amp; Azure), Telecom fundamentals (PSTN, OSS/BSS, 2G–5G), and GenAI (LLMs, RAG, LangChain, vector databases). Hands-on development roles at <strong>Ancile Digital, LTIMindtree, and ByteXL</strong>. Currently pursuing IIT Guwahati Micro-Credit Program (CGPA: 8.0).
+                </div>
+            </div>
+
+            <!-- ▸ EXPERIENCE -->
+            <div class="section">
+                <div class="section-head">
+                    <div class="section-icon icon-gold">▸</div>
+                    <h2>Professional Experience</h2>
+                </div>
+
+                <!-- Ancile Digital -->
+                <div class="exp-item dev">
+                    <div class="exp-head">
+                        <div class="exp-title">Senior Software Engineer <span class="role-type-pill pill-dev">Dev</span><span class="role-type-pill pill-current">Current</span></div>
+                        <div class="exp-date-badge">04/2025 – Present</div>
+                    </div>
+                    <div class="exp-company"><strong>Ancile Digital</strong> (Deployed to Version 1 — Client: International Schools Partnership, ISP) &nbsp;·&nbsp; Bengaluru (Hybrid)</div>
+                    <ul class="exp-list">
+                        <li>Implementing backend services based on approved LLD specs using <strong>Node.js and Python</strong></li>
+                        <li>Developing scalable full-stack modules and REST APIs (MERN) with <strong>AWS Amplify, SQS, Athena, OpenAI</strong></li>
+                        <li>Integrating <strong>ClassLink</strong> for enhanced security and authentication; ensuring production-ready releases for global rollout</li>
+                    </ul>
+                </div>
+
+                <!-- ByteXL -->
+                <div class="exp-item">
+                    <div class="exp-head">
+                        <div class="exp-title">Web Developer &amp; Technical Trainer <span class="role-type-pill pill-train">Trainer</span></div>
+                        <div class="exp-date-badge">09/2023 – 03/2025</div>
+                    </div>
+                    <div class="exp-company"><strong>ByteXL</strong> (www.bytexl.com) &nbsp;·&nbsp; Bengaluru</div>
+                    <ul class="exp-list">
+                        <li>Mentored <strong>300+ students across 15+ batches</strong>; delivered <strong>800+ student-hours</strong> in MERN, Java Full Stack, DevOps, AWS</li>
+                        <li>Guided real-world projects: <em>ProductSphere</em> (React + TypeScript dashboard with shadcn/ui) and <em>Analytics Portal</em> (Flask + Supabase + Pandas)</li>
+                        <li>Delivered React, Angular, Spring Boot, Docker, Kubernetes; trained SDLC, Agile, CI/CD, Jenkins pipelines</li>
+                        <li>Designed training materials achieving <strong>95%+ engagement rates</strong> across cohorts</li>
+                    </ul>
+                </div>
+
+                <!-- Tripillar -->
+                <div class="exp-item">
+                    <div class="exp-head">
+                        <div class="exp-title">Technical Expert &amp; Trainer <span class="role-type-pill pill-train">Trainer</span><span class="role-type-pill pill-current">Current</span></div>
+                        <div class="exp-date-badge">06/2024 – Present</div>
+                    </div>
+                    <div class="exp-company"><strong>Tripillar Solutions</strong> &nbsp;·&nbsp; Bengaluru</div>
+                    <ul class="exp-list">
+                        <li>Delivering training on MERN Stack, Java Full Stack, and DevOps with hands-on lab modules</li>
+                    </ul>
+                </div>
+
+                <!-- Freelance -->
+                <div class="exp-item">
+                    <div class="exp-head">
+                        <div class="exp-title">Freelance Technical Trainer <span class="role-type-pill pill-train">Trainer</span><span class="role-type-pill pill-current">Current</span></div>
+                        <div class="exp-date-badge">12/2020 – Present</div>
+                    </div>
+                    <div class="exp-company"><strong>ICT Academy · MTD · Connect2Future · Genesis · Skill Bout · Bizotic · Seventh Sense · Dlithe</strong></div>
+                    <ul class="exp-list">
+                        <li>Actively delivering with <strong>MTD</strong> (ATME College — Data Engineering &amp; Analytics, Fri/Sat 4hrs/day) and <strong>Connect2Future</strong> (GMIT College — Full Stack &amp; placement prep)</li>
+                        <li>Delivered <strong>180+ hour intensive programs</strong> in Java, Spring Boot, Python, Angular, React, AWS, Docker, Kafka, CI/CD across Karnataka and Gujarat</li>
+                        <li>Conducted <strong>Telecom-focused training</strong> covering PSTN call flow, mobile architectures (2G–5G), OSS/BSS, billing lifecycle, provisioning systems, and cloud-native OSS/BSS</li>
+                        <li>Delivered <strong>GenAI &amp; Data Engineering</strong> sessions: LLMs, prompt engineering, LangChain, RAG pipelines, embeddings, vector databases, Kafka, Airflow, ML deployment</li>
+                        <li>Conducted fresher readiness programs aligned with <strong>Infosys, TCS, Capgemini, Wipro, Accenture, IBM</strong> hiring expectations; 40+ workshops delivered</li>
+                        <li>Covered Linux/Unix, shell scripting, Cloud (IaaS/PaaS/SaaS), AWS/Azure fundamentals, Agile, SDLC/STLC</li>
+                    </ul>
+                </div>
+
+                <!-- LTIMindtree -->
+                <div class="exp-item dev">
+                    <div class="exp-head">
+                        <div class="exp-title">Software Engineer <span class="role-type-pill pill-dev">Dev</span></div>
+                        <div class="exp-date-badge">05/2022 – 06/2023</div>
+                    </div>
+                    <div class="exp-company"><strong>LTIMindtree</strong> &nbsp;·&nbsp; Bengaluru</div>
+                    <ul class="exp-list">
+                        <li>Developed and customized a responsive web application for <strong>Harvard Medical School</strong> educational offerings; built and deployed MERN stack ERP (HRMS)</li>
+                        <li>Leveraged AWS (EC2, S3, RDS, Lambda) with Jenkins CI/CD pipelines — contributed to <strong>20% infrastructure cost reduction</strong></li>
+                        <li>Implemented reusable components and REST API integrations for enterprise-grade delivery</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ▸ KEY TRAINING ENGAGEMENTS -->
+            <div class="section">
+                <div class="section-head">
+                    <div class="section-icon icon-blue">✦</div>
+                    <h2>Key Training Engagements</h2>
+                </div>
+
+                <div class="highlight-cards">
+                    <div class="h-card capgemini">
+                        <div class="h-title">🏆 Capgemini Women Transformation Program</div>
+                        <div class="h-body"><strong>180+ hours</strong> Java Full Stack &amp; DevOps · Spring Boot, Angular, CI/CD, Docker, Kubernetes · <strong style="color:#166534;">92% Placement Rate</strong></div>
+                    </div>
+                    <div class="h-card corporate">
+                        <div class="h-title">🏢 Fresher Readiness — Big 6 IT Firms</div>
+                        <div class="h-body">Pre-joining programs aligned with <strong>Infosys · TCS · Capgemini · Wipro · Accenture · IBM</strong> hiring standards &amp; technical interview prep</div>
+                    </div>
+                    <div class="h-card corporate" style="background:var(--teal-dim);border-color:rgba(13,148,136,0.2);">
+                        <div class="h-title">📡 Telecom Domain Training</div>
+                        <div class="h-body">PSTN call flow, 2G–5G mobile architectures, OSS/BSS, billing lifecycle, provisioning systems, cloud-native OSS/BSS concepts</div>
+                    </div>
+                    <div class="h-card capgemini" style="background:var(--blue-dim);border-color:rgba(29,78,216,0.15);">
+                        <div class="h-title">🤖 GenAI &amp; Data Engineering</div>
+                        <div class="h-body">LLMs, RAG pipelines, LangChain, vector databases, Kafka, Airflow, ML deployment basics, prompt engineering</div>
+                    </div>
+                </div>
+
+                <div style="margin-top:12px;">
+                    <div style="font-size:0.8em;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">20+ Premier Institutions</div>
+                    <div class="inst-grid">
+                        <div class="inst-chip">BNM IT</div>
+                        <div class="inst-chip">Kalpataru IT</div>
+                        <div class="inst-chip">GEC Hassan</div>
+                        <div class="inst-chip">RNSIT</div>
+                        <div class="inst-chip">Christ Univ.</div>
+                        <div class="inst-chip">Presidency</div>
+                        <div class="inst-chip">Jain Univ.</div>
+                        <div class="inst-chip">Bapuji</div>
+                        <div class="inst-chip">BIT</div>
+                        <div class="inst-chip">AJIT</div>
+                        <div class="inst-chip">BMSIT</div>
+                        <div class="inst-chip">SMVITM</div>
+                        <div class="inst-chip">NIE</div>
+                        <div class="inst-chip">JIT</div>
+                        <div class="inst-chip">SJCE</div>
+                        <div class="inst-chip">KLE</div>
+                        <div class="inst-chip">Don Bosco</div>
+                        <div class="inst-chip">Nagarjuna</div>
+                        <div class="inst-chip">ATME (MTD)</div>
+                        <div class="inst-chip">GMIT (C2F)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ▸ PROJECTS -->
+            <div class="section">
+                <div class="section-head">
+                    <div class="section-icon icon-teal">◇</div>
+                    <h2>Key Projects</h2>
+                </div>
+
+                <div class="proj-item">
+                    <div class="proj-head">Harvard Medical School — Educational Offerings Website</div>
+                    <div style="font-size:0.8em;color:var(--muted);margin-bottom:4px;">Enterprise-grade web app aligned with business goals; REST API integrations; cloud deployment.</div>
+                    <div class="proj-stack">
+                        <span class="stack-pill">MERN</span><span class="stack-pill">AWS EC2</span><span class="stack-pill">AWS S3</span><span class="stack-pill">AWS RDS</span><span class="stack-pill">Jenkins</span>
+                    </div>
+                </div>
+
+                <div class="proj-item">
+                    <div class="proj-head">HRMS ERP Application</div>
+                    <div style="font-size:0.8em;color:var(--muted);margin-bottom:4px;">Full-cycle HR management system with Spring Boot backend and AWS infrastructure; 20% cost reduction.</div>
+                    <div class="proj-stack">
+                        <span class="stack-pill">Java 8</span><span class="stack-pill">Spring Boot</span><span class="stack-pill">JPA/Hibernate</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">AWS</span>
+                    </div>
+                </div>
+
+                <div class="proj-item">
+                    <div class="proj-head">ProductSphere — E-Commerce Product Dashboard</div>
+                    <div style="font-size:0.8em;color:var(--muted);margin-bottom:4px;">Filtering modules (price, category, availability), centralized API using async workflows &amp; Promise.all(), shadcn/ui.</div>
+                    <div class="proj-stack">
+                        <span class="stack-pill">React</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Vite</span><span class="stack-pill">Tailwind CSS</span><span class="stack-pill">shadcn/ui</span>
+                    </div>
+                </div>
+
+                <div class="proj-item">
+                    <div class="proj-head">Analytics Portal (MTD) — Monthly Tracking &amp; Analytics Platform</div>
+                    <div style="font-size:0.8em;color:var(--muted);margin-bottom:4px;">Backend APIs for MTD analytics; PDF parsing, tabular extraction, data processing; Docker/Kubernetes deployment.</div>
+                    <div class="proj-stack">
+                        <span class="stack-pill">Flask</span><span class="stack-pill">Python</span><span class="stack-pill">Supabase</span><span class="stack-pill">MySQL</span><span class="stack-pill">Pandas</span><span class="stack-pill">NumPy</span><span class="stack-pill">Docker</span>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /main -->
+    </div><!-- /body grid -->
+
+    <div class="page-footer">
+        <span>Vikas Gowda J A &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection" cla
